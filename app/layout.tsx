@@ -1,4 +1,5 @@
 import BackgroundSpotlight from "@/components/BackgroundSpotlight";
+import { ModalContextProvider } from "@/lib/context";
 import "@/styles/globals.scss";
 export const metadata = {
   title: "Next.js",
@@ -14,7 +15,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <BackgroundSpotlight />
-        {children}</body>
+        <ModalContextProvider>{children}</ModalContextProvider>
+      </body>
     </html>
   );
 }

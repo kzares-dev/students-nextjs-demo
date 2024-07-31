@@ -1,8 +1,8 @@
 import { tableHead } from "@/lib/constants";
-import { FaDeleteLeft, FaPen, FaRegSquareFull } from "react-icons/fa6";
+import { FaRegSquareFull } from "react-icons/fa6";
 import TableHeader from "./TableHeader";
-import { BiTrash } from "react-icons/bi";
-import { StudentType } from "@/lib/tyoes";
+import { StudentType } from "@/lib/types";
+import ActionButtons from "./ActionButtons";
 
 const Table = ({ students }: { students: StudentType[] }) => {
   return (
@@ -20,7 +20,7 @@ const Table = ({ students }: { students: StudentType[] }) => {
 
         <tbody>
           {students.map((student, idx) => (
-            <tr>
+            <tr key={student.firstName + idx}>
               <td>
                 <FaRegSquareFull />
               </td>
@@ -28,10 +28,8 @@ const Table = ({ students }: { students: StudentType[] }) => {
               <td> {student.email} </td>
               <td> {student.grade} </td>
               <td> {student.age} y/o</td>
-              <td className="buttons">
-                <FaPen color="green" />
-                <BiTrash color="red" />
-              </td>
+              <ActionButtons  student={student} />
+              
             </tr>
           ))}
         </tbody>

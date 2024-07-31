@@ -5,6 +5,9 @@ $background-color: #eef4fd;
 $table-border-color: #edecec;
 $hover-background-color: #eee;
 
+$breakpoint-sm: 668px;
+$breakpoint-md: 992px;
+
 $font-size-base: 16px; // Base font size in pixels (px)
 
 // Font sizes using rem for scaling
@@ -15,11 +18,28 @@ $font-size-body: 1rem;
 $button-padding: 10px 30px;
 $border-radius-button: 20px;
 
-// _mixins.scss
 @mixin font-size($size) {
   font-size: calc(
     $size * #{$font-size-base}px
   ); // Using calc to correctly calculate the font size
+}
+
+@mixin small-screen {
+  @media only screen and (max-width: 668px) {
+    @content;
+  }
+}
+
+@mixin medium-screen {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
 }
 
 * {
@@ -44,6 +64,10 @@ input {
   padding: 10px 20px;
   border: none;
   background-color: transparent;
+
+  &[value] { 
+    background-color: transparent;
+  }
 }
 
 body {
@@ -53,6 +77,7 @@ body {
   min-height: 100vh;
   font-family: "Raleway", sans-serif;
   background: $background-color;
+  padding: 10px;
 }
 
 .container {
@@ -209,6 +234,7 @@ MODAL STYLES
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
+  padding: 20px;
 
   animation: fade-in 0.5s ease-in-out;
 
@@ -224,6 +250,11 @@ MODAL STYLES
   .container {
     display: flex;
     flex-direction: row;
+    box-shadow: none;
+
+    @include small-screen {
+      flex-direction: column;
+    }
 
     .icon_section {
       padding: 20px 60px;
@@ -251,6 +282,15 @@ MODAL STYLES
 
       h1 {
         padding: 20px 0;
+        text-align: left;
+        width: 100%;
+        max-width: 400px;
+        font-weight: 200;
+
+        span{
+          color: $primary-color;
+          font-weight: bold;
+        }
       }
 
       .input {
@@ -314,4 +354,24 @@ MODAL STYLES
       }
     }
   }
+}
+
+/*===================
+LOADING BUTTON STYLES
+====================*/
+
+.loading-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid $primary-color;
+  border-color: #fff transparent #fff transparent; 
+  animation: spin 1.2s linear infinite; 
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
