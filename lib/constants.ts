@@ -1,8 +1,8 @@
 export const tableHead = [
-    "First Name",
-    "Last Name",
+    "",
+    "Full Name",
     "Email",
     "Age",
     "Grade",
-    "Acttions",
+    "Actions",
 ]

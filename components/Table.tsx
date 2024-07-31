@@ -1,24 +1,13 @@
 import { tableHead } from "@/lib/constants";
+import { FaRegSquareFull } from "react-icons/fa6";
+import TableHeader from "./TableHeader";
 
 const Table = () => {
   return (
     <section className="container">
-      <div className="table_header">
-        <h2>Products</h2>
-        <button>Create New</button>
-        <select name="" id="">
-          <option value="">Type1</option>
-          <option value="">Type2</option>
-          <option value="">Type3</option>
-        </select>
-        <div className="input_search">
-          <input type="search" placeholder="Search..." />
-          {/* TODO: search icon */}
-        </div>
-      </div>
+      <TableHeader />
 
       <table>
-
         <thead>
           <tr>
             {tableHead.map((headItem) => (
@@ -29,56 +18,49 @@ const Table = () => {
 
         <tbody>
           <tr>
-            <td>John</td>
-            <td>Deo</td>
+            <td> <FaRegSquareFull color="#444" /> </td>
+            <td>John Deo</td>
             <td>johndeo@gmail.com</td>
             <td>12</td>
             <td>2</td>
-            <td>
-              A {/* TODO: icons for delete and edit */}
-              B
-            </td>
+            <td>A {/* TODO: icons for delete and edit */}B</td>
           </tr>
           <tr>
-            <td>John</td>
-            <td>Deo</td>
+            <td> <FaRegSquareFull /> </td>
+            <td>John Deo</td>
             <td>johndeo@gmail.com</td>
             <td>12</td>
             <td>2</td>
-            <td>
-              A {/* TODO: icons for delete and edit */}
-              B
-            </td>
+            <td>A {/* TODO: icons for delete and edit */}B</td>
           </tr>
           <tr>
-            <td>John</td>
-            <td>Deo</td>
+            <td> <FaRegSquareFull /> </td>
+            <td>John Deo</td>
             <td>johndeo@gmail.com</td>
             <td>12</td>
             <td>2</td>
-            <td>
-              A {/* TODO: icons for delete and edit */}
-              B
-            </td>
+            <td>A {/* TODO: icons for delete and edit */}B</td>
           </tr>
           <tr>
-            <td>John</td>
-            <td>Deo</td>
+            <td> <FaRegSquareFull /> </td>
+            <td>John Deo</td>
             <td>johndeo@gmail.com</td>
             <td>12</td>
             <td>2</td>
-            <td>
-              A {/* TODO: icons for delete and edit */}
-              B
-            </td>
+            <td>A {/* TODO: icons for delete and edit */}B</td>
+          </tr>
+          <tr>
+            <td> <FaRegSquareFull /> </td>
+            <td>John Deo</td>
+            <td>johndeo@gmail.com</td>
+            <td>12</td>
+            <td>2</td>
+            <td>A {/* TODO: icons for delete and edit */}B</td>
           </tr>
         </tbody>
-
       </table>
 
-      <div className="table_fotter">
-        <p>Row count: 4</p>
-      </div>
+      
     </section>
   );
 };
