@@ -12,7 +12,7 @@ const TableHeader = () => {
           <input className="input" type="search" placeholder="Search..." />
           <CiSearch />
         </div>
-        <Button> Create Student </Button>
+        <Button type="navbar" > Create Student </Button>
       </div>
     </div>
   );
