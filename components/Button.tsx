@@ -7,7 +7,7 @@ const Button = ({
   type,
 }: {
   children: React.ReactNode;
-  type: "navbar";
+  type: "navbar" | "submit" | "exit";
 }) => {
   const { state, dispatch } = useContext(ModalContext);
 
@@ -18,7 +18,7 @@ const Button = ({
     }
   }
 
-  return <button onClick={onClickCallback}>{children}</button>;
+  return <button className={type === "exit" ? "btn_exit" : "btn_primary" } onClick={onClickCallback}>{children}</button>;
 };
 
 export default Button;
