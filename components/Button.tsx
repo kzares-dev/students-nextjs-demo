@@ -1,7 +1,9 @@
 
-const Button = () => {
+const Button = ({ children } : { children: React.ReactNodei}) => {
   return (
-    <div>Button</div>
+    <button>
+      {children}
+    </button>
   )
 }
 
