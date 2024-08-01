@@ -4,7 +4,7 @@ import Button from "./Button";
 import { MdAlternateEmail } from "react-icons/md";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { TbNumber } from "react-icons/tb";
-import { createStudent } from "@/lib/actions/student.action";
+import { createStudent, editStudent } from "@/lib/actions/student.action";
 import Loader from "./Loader";
 import { StudentType } from "@/lib/types";
 
@@ -26,7 +26,7 @@ const CreateStudentModal = ({
   }
 
   return (
-    <section className="create_student">
+    <section className="modal">
 
       <div className="container">
 
@@ -36,7 +36,7 @@ const CreateStudentModal = ({
           </span>
         </div>
 
-        <form action={createStudent}>
+        <form action={edit? editStudent: createStudent }>
         <h1>{edit? "Edit" : "Create"} <span>Student</span> </h1>
           <div className="input">
             <MdDriveFileRenameOutline />

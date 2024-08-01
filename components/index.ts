@@ -4,6 +4,7 @@ import TableHeader from "./TableHeader";
 import CreateStudentModal from "./CreateStudentModal";
 import Loader from "./Loader";
 import ActionButtons from "./ActionButtons";
+import DialogModal from "./DialogModal";
 
 export {
     Button,
@@ -11,5 +12,6 @@ export {
     TableHeader,
     CreateStudentModal,
     Loader,
-    ActionButtons
+    ActionButtons,
+    DialogModal,
 }

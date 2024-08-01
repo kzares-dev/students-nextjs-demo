@@ -1,3 +1,10 @@
+"use client"
+{/*
+   this component must be marked as a client component 
+   in order to make dinamics filtering and pagination
+
+  */}
+import { useEffect, useState } from "react";
 import { tableHead } from "@/lib/constants";
 import { FaRegSquareFull } from "react-icons/fa6";
 import TableHeader from "./TableHeader";
@@ -5,9 +12,24 @@ import { StudentType } from "@/lib/types";
 import ActionButtons from "./ActionButtons";
 
 const Table = ({ students }: { students: StudentType[] }) => {
+  const [selectedStudents, setSelectedStudents] = useState(students);
+  const [searchParam, setSearchParam] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    // make the function to search
+  }, [searchParam])
+
+  useEffect(() => {
+    // make the funcion to paginate
+  }, [currentPage])
+  
   return (
     <section className="container">
-      <TableHeader />
+      <TableHeader 
+      searchParam={searchParam}
+      setSearchParam={setSearchParam}
+      />
 
       <table>
         <thead>
@@ -19,7 +41,7 @@ const Table = ({ students }: { students: StudentType[] }) => {
         </thead>
 
         <tbody>
-          {students.map((student, idx) => (
+          {selectedStudents.map((student, idx) => (
             <tr key={student.firstName + idx}>
               <td>
                 <FaRegSquareFull />

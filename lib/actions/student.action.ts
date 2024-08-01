@@ -2,8 +2,7 @@ import axios from "axios";
 import { dummyStudents } from "../constants";
 import { StudentType } from "../types";
 
-const serverUrl = process.env.SERVER_URL;
-
+const serverUrl = "http://localhost:3001";
 /**
  * Function to fetch list of students from the server
  * @param page - Page number for pagination
@@ -11,9 +10,9 @@ const serverUrl = process.env.SERVER_URL;
  */
 export async function getStudents(page: number): Promise<StudentType[]> {
   try {
-   // const response = await axios.get(`${serverUrl}/api/students`);
-    //console.log(response.data.students);
-    return dummyStudents;
+   //const response = await axios.get(`${serverUrl}/api/students`);
+    //return response.data.students;
+    return dummyStudents
   } catch (error:any) {
     console.error("Error fetching students:", error.message);
     // Return an empty array or handle the error as needed
@@ -36,6 +35,28 @@ export async function createStudent(formData: FormData) {
 
   try {
     const response = await axios.post(`${serverUrl}/api/students`, { student });
+    return response.data;
+  } catch (error: any) {
+    console.error("Error creating student:", error.message);
+    // Handle the error (e.g., show a user-friendly message)
+  }
+}
+
+/**
+ * Function to edit a student, works exactly like the create student
+ * @param formData - Form data containing student details
+ */
+export async function editStudent(formData: FormData) {
+  const student = {
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    email: formData.get("email"),
+    grade: formData.get("grade"),
+    age: formData.get("age"),
+  };
+
+  try {
+    const response = await axios.put(`${serverUrl}/api/students`, { student });
     return response.data;
   } catch (error: any) {
     console.error("Error creating student:", error.message);

@@ -1,11 +1,9 @@
-import { Table } from "@/components";
-import { getStudents } from "@/lib/actions/student.action";
+import React from 'react'
 
-const Home = async ({ params }: { params: any }) => {
-  // TODO: Get the url params to make a pagination
-  const students = await getStudents(1);
+function Home() {
+  return (
+    <div>Home</div>
+  )
+}
 
-return <Table students={students} />;
-};
-
-export default Home;
+export default Home
