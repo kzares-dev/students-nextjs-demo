@@ -1,6 +1,5 @@
 import axios from "axios";
-import { dummyStudents } from "../constants";
-import { StudentType } from "../types";
+import { GetAllResponseType } from "../types";
 
 const serverUrl = "http://localhost:3001";
 /**
@@ -8,15 +7,26 @@ const serverUrl = "http://localhost:3001";
  * @param page - Page number for pagination
  * @returns List of StudentType objects
  */
-export async function getStudents(page: number): Promise<StudentType[]> {
+export async function getStudents(
+  currentPage: number,
+  searchParam: string
+): Promise<GetAllResponseType> {
   try {
-   //const response = await axios.get(`${serverUrl}/api/students`);
-    //return response.data.students;
-    return dummyStudents
-  } catch (error:any) {
+    const response = await axios.get(
+      `${serverUrl}/api/students?page=${currentPage}&limit=5&search=${searchParam}`
+    );
+    return response.data;
+  } catch (error: any) {
     console.error("Error fetching students:", error.message);
     // Return an empty array or handle the error as needed
-    return [];
+    return {
+      students: [],
+      nextPage: null,
+      previousPage: null,
+      total: 0,
+      currentPage: 0,
+      pageSize: 0,
+    };
   }
 }
 

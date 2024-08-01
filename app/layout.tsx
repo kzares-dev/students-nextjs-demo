@@ -1,8 +1,9 @@
 import BackgroundSpotlight from "@/components/BackgroundSpotlight";
 import { ModalContextProvider } from "@/lib/context";
 import "@/styles/globals.scss";
+import { ToastContainer } from "react-toastify";
 export const metadata = {
-  title: "students",
+  title: "Students",
   description: "Dashboard demo with nextjs/mongodb/node",
 };
 
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ToastContainer />
         <BackgroundSpotlight />
         <ModalContextProvider>{children}</ModalContextProvider>
       </body>

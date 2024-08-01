@@ -1,8 +1,8 @@
-import React from 'react'
+import { Table } from '@/components'
 
 function Home() {
   return (
-    <div>Home</div>
+    <Table />
   )
 }
 

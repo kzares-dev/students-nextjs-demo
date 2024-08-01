@@ -10,7 +10,6 @@ function ActionButtons({ student }: { student: StudentType }) {
   const { state, dispatch } = useContext(ModalContext);
   const [openDialogModal, setOpenDialogModal] = useState(false);
 
-  console.log(student);
   const clickOnEdit = () => {
     dispatch({ type: "EDIT_STUDENT", student: student });
   };

@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import avatar from "@/public/avatar.gif";
 import Button from "./Button";
@@ -15,7 +16,6 @@ const CreateStudentModal = ({
   student?: StudentType
   edit: boolean,
 }) => {
-
   // the creation of this object is mandatory, in other case the creation of new student will throw an error
   const defaultStudent = {
     firstName: student?.firstName,

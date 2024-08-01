@@ -90,6 +90,8 @@ body {
   max-width: 950px;
   overflow: hidden;
   min-height: 450px;
+  padding-bottom: 100px;
+  position: relative;
 
   .table_header {
     display: flex;
@@ -260,6 +262,7 @@ MODAL STYLES
     display: flex;
     flex-direction: row;
     box-shadow: none;
+    padding-bottom: 0;
 
     @include small-screen {
       flex-direction: column;
@@ -403,3 +406,145 @@ DIALOG POPUP STYLES
     }
   }
 }
+
+/*===================
+PAGINATION STYLES
+====================*/
+.pagination {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+
+  .pages_info {
+    h3 {
+      font-size: 15px;
+      color: #444;
+      font-weight: 400;
+    }
+    h2 {
+      color: #222;
+    }
+  }
+
+  .pagination_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .current_page {
+      background-color: $primary-color;
+      color: white;
+      padding: 15px 0;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      width: fit-content;
+      background-color: #fff;
+      padding: 10px;
+      min-width: 50px;
+      font-weight: 900;
+      border: 1px solid #eee;
+      box-shadow: 5px 5px 4px solid #000;
+      color: $primary-color;
+      font: bold;
+
+      p {
+        color: #000;
+      }
+    }
+  }
+}
+
+/*===================
+NOT FOUND STYLES
+====================*/
+.not_found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 100px 0;
+
+}
+
+/*===================
+SHRIMMER STYLES
+====================*/
+.table_shrimmer {
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap:20px;
+  width: 100%;
+  padding: 30px 50px 0 50px;
+
+  .shrimmer_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-direction: row;
+
+    span{
+      height: 40px;
+      width: 20%;
+      border-radius: 10px;
+      background: #eee;
+      animation: shrimmer 2s linear infinite;
+
+    }
+
+  }
+  .shrimmer{
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    border-radius:5px;
+    animation: shrimmer 2s linear infinite;
+
+  }
+
+  .shrimmer_footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 40px;
+    span{
+      height: 40px;
+      width: 50%;
+      border-radius: 10px;
+      background: #eee;
+      animation: shrimmer 2s linear infinite;
+
+    }
+  }
+
+  @keyframes shrimmer {
+    0% {
+      opacity: .5;
+    }
+    50%{  
+      opacity: 1;
+    }
+    100% {
+      opacity: .5;
+    }
+  }
+}
+
