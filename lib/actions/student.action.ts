@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GetAllResponseType } from "../types";
 
-const serverUrl = process.env.PROD_SERVER || "http://localhost:3001";
+const serverUrl = "https://express-students-crud.vercel.app/" ;
 console.log(serverUrl)
 /**
  * Function to fetch list of students from the server
