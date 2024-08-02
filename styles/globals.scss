@@ -77,6 +77,12 @@ body {
   font-family: "Raleway", sans-serif;
   background: $background-color;
   padding: 10px;
+
+  @include medium-screen{
+    justify-content: left;
+    align-items: normal;
+    padding-top: 20% ;
+  }
 }
 
 .container {
@@ -87,10 +93,16 @@ body {
   border-radius: 10px;
   width: 100vw;
   max-width: 950px;
+  min-width: 800px;
   overflow: hidden;
   min-height: 550px;
   padding-bottom: 100px;
   position: relative;
+
+  @include medium-screen{
+    min-height: 100px;
+    height: fit-content;
+  }
 
   .table_header {
     display: flex;

@@ -10,7 +10,7 @@ import Loader from "./Loader";
 import { StudentType } from "@/lib/types";
 import { FormEvent, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { ModalContext } from "@/lib/context";
+import { ModalContext } from "@/lib/context/modalContext";
 
 const CreateStudentModal = ({
   student,
@@ -35,6 +35,7 @@ const CreateStudentModal = ({
     setIsPending(true);
 
     const formData = new FormData(event.currentTarget);
+    
     if (edit) {
       await editStudent(formData, student!._id)
         .then(() => {

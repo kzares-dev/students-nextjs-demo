@@ -8,4 +8,4 @@ const NoFound = () => {
   )
 }
 
-export default NoFound
+export default NoFound  

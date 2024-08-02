@@ -3,7 +3,7 @@ import { deleteStudent } from "@/lib/actions/student.action";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
-import { ModalContext } from "@/lib/context";
+import { ModalContext } from "@/lib/context/modalContext";
 
 const DialogModal = ({
   onCloseDialog,

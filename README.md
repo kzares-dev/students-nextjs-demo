@@ -4,7 +4,8 @@
 
 ![Table](/public/screenshots/table.png)
 
-The student creation functionality utilizes React's Context API to provide a seamless user experience. Notifications are displayed to confirm successful creation, and the main component automatically refreshes to reflect the updated data.
+The student creation functionality utilizes React's Context API to provide a seamless user experience. 
+Notifications are displayed to confirm successful creation, and the main component automatically refreshes to reflect the updated data.
 
 ![Table](/public/screenshots/create.png)
 ![Table](/public/screenshots/dialog.png)
@@ -48,7 +49,7 @@ This is a simple build of a crud, using nextjs and a [node server](https://githu
  **Context** - [React Context API]
 **Code Formatting** - [Prettier](https://prettier.io/)
 
-## 👨🏻‍💻 Running Locally
+##  👨🏻‍💻 Running Locally
 
 You can start using this project locally by running the following command in your desired directory:
 

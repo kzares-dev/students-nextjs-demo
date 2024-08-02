@@ -1,5 +1,5 @@
 "use client";
-import { ModalContext } from "@/lib/context";
+import { ModalContext } from "@/lib/context/modalContext";
 import { useContext } from "react";
 
 const Button = ({
@@ -11,7 +11,7 @@ const Button = ({
   type: "navbar" | "submit" | "exit";
   customCallback?: () => void
 }) => {
-  const { state, dispatch } = useContext(ModalContext);
+  const { dispatch } = useContext(ModalContext);
 
   const onClickCallback = (e: any) => {
     e.preventDefault();

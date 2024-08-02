@@ -1,8 +1,9 @@
 import BackgroundSpotlight from "@/components/BackgroundSpotlight";
-import { ModalContextProvider } from "@/lib/context";
+import { ModalContextProvider } from "@/lib/context/modalContext";
 import "react-toastify/dist/ReactToastify.css";
 import "@/styles/globals.scss";
 import { ToastContainer } from "react-toastify";
+import { RefreshContextProvider } from "@/lib/context/refreshContext";
 
 export const metadata = {
   title: "Students",
@@ -17,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ToastContainer/>
+        <ToastContainer />
         <BackgroundSpotlight />
-        <ModalContextProvider>{children}</ModalContextProvider>
+        <ModalContextProvider>
+          <RefreshContextProvider>
+            {children}
+            </RefreshContextProvider>
+        </ModalContextProvider>
       </body>
     </html>
   );

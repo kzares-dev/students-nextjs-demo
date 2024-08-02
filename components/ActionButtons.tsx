@@ -1,5 +1,5 @@
 "use client";
-import { ModalContext } from "@/lib/context";
+import { ModalContext } from "@/lib/context/modalContext";
 import { StudentType } from "@/lib/types";
 import { useContext, useState } from "react";
 import { BiTrash } from "react-icons/bi";

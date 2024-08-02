@@ -1,7 +1,7 @@
 "use client";
 import React, { Dispatch, createContext, useReducer } from "react";
 import { CreateStudentModal } from "@/components";
-import { StudentType } from "./types";
+import { StudentType } from "../types";
 
 // Types for the state and actions
 type StateType = {

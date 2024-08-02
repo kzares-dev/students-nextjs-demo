@@ -1,8 +1,9 @@
-import React from "react";
+import { RefreshContext } from "@/lib/context/refreshContext";
+import { useContext } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Pagination = ({
-  currentPage = 1,
+  currentPage = 0,
   pageSize = 5,
   nextPage,
   previousPage,
@@ -16,6 +17,13 @@ const Pagination = ({
   totalItems: number | undefined;
   setCurrentPage: (page: number) => void;
 }) => {
+  const { dispatch } = useContext(RefreshContext);
+
+  const paginate = (page: number) => {
+    setCurrentPage(page);
+    dispatch({ type: "REFRESH"});
+  };
+
   return (
     <div className="pagination">
       <div className="pages_info">
@@ -27,7 +35,7 @@ const Pagination = ({
 
       <div className="pagination_buttons">
         {previousPage && (
-          <button onClick={() => setCurrentPage(previousPage)}>
+          <button onClick={() => paginate(previousPage)}>
             <BiChevronLeft />
             <p>{previousPage}</p>
           </button>
@@ -36,7 +44,7 @@ const Pagination = ({
           <button className="current_page"> {currentPage} </button>
         )}
         {nextPage && (
-          <button onClick={() => setCurrentPage(nextPage)}>
+          <button onClick={() => paginate(nextPage)}>
             <p> {nextPage}</p>
             <BiChevronRight />
           </button>
