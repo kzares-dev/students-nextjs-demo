@@ -7,7 +7,7 @@ import { FaPen } from "react-icons/fa6";
 import DialogModal from "./DialogModal";
 
 function ActionButtons({ student }: { student: StudentType }) {
-  const { state, dispatch } = useContext(ModalContext);
+  const { dispatch } = useContext(ModalContext);
   const [openDialogModal, setOpenDialogModal] = useState(false);
 
   const clickOnEdit = () => {
@@ -21,7 +21,7 @@ function ActionButtons({ student }: { student: StudentType }) {
     <td className="buttons">
       {openDialogModal && (
         <DialogModal
-          studentId={"student id"}
+          studentId={student._id}
           onCloseDialog={() => setOpenDialogModal(false)}
         />
       )}

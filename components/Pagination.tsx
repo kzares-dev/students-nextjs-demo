@@ -7,12 +7,14 @@ const Pagination = ({
   nextPage,
   previousPage,
   totalItems = 0,
+  setCurrentPage,
 }: {
   currentPage: number | undefined;
   pageSize: number | undefined;
   nextPage: number | null | undefined;
   previousPage: number | null | undefined;
   totalItems: number | undefined;
+  setCurrentPage: (page: number) => void;
 }) => {
   return (
     <div className="pagination">
@@ -25,19 +27,18 @@ const Pagination = ({
 
       <div className="pagination_buttons">
         {previousPage && (
-          <button>
-            {" "}
+          <button onClick={() => setCurrentPage(previousPage)}>
             <BiChevronLeft />
-            <p>{previousPage}</p>{" "}
+            <p>{previousPage}</p>
           </button>
         )}
         {totalItems > 5 && (
           <button className="current_page"> {currentPage} </button>
         )}
         {nextPage && (
-          <button>
-            {" "}
-            <BiChevronRight /> <p> {nextPage}</p>{" "}
+          <button onClick={() => setCurrentPage(nextPage)}>
+            <p> {nextPage}</p>
+            <BiChevronRight />
           </button>
         )}
       </div>

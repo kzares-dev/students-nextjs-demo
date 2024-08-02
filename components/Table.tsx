@@ -6,7 +6,7 @@
 
   */
 }
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { tableHead } from "@/lib/constants";
 import { FaRegSquareFull } from "react-icons/fa6";
 import TableHeader from "./TableHeader";
@@ -16,8 +16,10 @@ import { getStudents } from "@/lib/actions/student.action";
 import Pagination from "./Pagination";
 import NoFound from "./NoFound";
 import TableShrimmer from "./TableShrimmer";
+import { ModalContext } from "@/lib/context";
 
 const Table = () => {
+  const { state } = useContext(ModalContext)
   const [selectedStudents, setSelectedStudents] = useState<StudentType[]>([]);
   const [searchParam, setSearchParam] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,6 +27,7 @@ const Table = () => {
   const [stateData, setStateData] = useState<GetAllResponseType>();
 
   useEffect(() => {
+    console.log("call ")
     setSelectedStudents([])
     setPromisePending(true)
     // make the function to search & paginate
@@ -36,9 +39,7 @@ const Table = () => {
       })
       .catch((e) => console.log(e))
       .finally(() => setPromisePending(false));
-  }, [searchParam, currentPage]);
-
-  useEffect(() => {}, [currentPage]);
+  }, [searchParam, currentPage, state]);
 
   return (
     <section className="container">
@@ -90,6 +91,7 @@ const Table = () => {
           nextPage={stateData?.nextPage}
           previousPage={stateData?.previousPage}
           totalItems={stateData?.total}
+          setCurrentPage={setCurrentPage}
         />
       )}
     </section>

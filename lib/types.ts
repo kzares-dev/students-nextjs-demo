@@ -4,6 +4,7 @@ export type StudentType = {
     email: string,
     age: number,
     grade: number,
+    _id: string,
 }
 
 export type GetAllResponseType ={

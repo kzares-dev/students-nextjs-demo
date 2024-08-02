@@ -11,6 +11,7 @@ const TableShrimmer = () => {
 
       <div className="shrimmer" />
       <div className="shrimmer" />
+      <div className="shrimmer" />
 
       <div className="shrimmer_footer">
         <span />

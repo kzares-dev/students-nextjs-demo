@@ -11,7 +11,7 @@ type StateType = {
 };
 
 type ActionType = {
-  type: "TOGGLE_MODAL" | "EDIT_STUDENT"; // Action type
+  type: "TOGGLE_MODAL" | "EDIT_STUDENT" | 'REFRESH'; // Action type
   student?: StudentType;
 };
 
@@ -27,6 +27,8 @@ const reducer = (state: StateType, action: ActionType) => {
       return { ...state, isOpen: !state.isOpen, student: {} }; // Toggle modal state & set the student to empty
     case "EDIT_STUDENT":
       return { ...state, isOpen: !state.isOpen, student: action.student };
+    case "REFRESH":
+      return { ...state }; // this action not make changes on state, but the useEffect in the table capture the state change and refresh the data
     default:
       return state;
   }

@@ -55,8 +55,9 @@ export async function createStudent(formData: FormData) {
 /**
  * Function to edit a student, works exactly like the create student
  * @param formData - Form data containing student details
+ * @param _id is the student id
  */
-export async function editStudent(formData: FormData) {
+export async function editStudent(formData: FormData, id: string) {
   const student = {
     firstName: formData.get("firstName"),
     lastName: formData.get("lastName"),
@@ -66,10 +67,19 @@ export async function editStudent(formData: FormData) {
   };
 
   try {
-    const response = await axios.put(`${serverUrl}/api/students`, { student });
+    const response = await axios.put(`${serverUrl}/api/students/${id}`, { student });
     return response.data;
   } catch (error: any) {
     console.error("Error creating student:", error.message);
     // Handle the error (e.g., show a user-friendly message)
+  }
+}
+
+export async function deleteStudent(id: string) {
+  try {
+    const response = await axios.delete(`${serverUrl}/api/students/${id}`);
+    return response.data;
+  } catch (error: any) {
+    console.error("Error creating student:", error.message);
   }
 }
