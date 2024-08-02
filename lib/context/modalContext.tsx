@@ -6,7 +6,7 @@ import { StudentType } from "../types";
 // Types for the state and actions
 type StateType = {
   isOpen: boolean; // Modal state (open or closed)
-  student?: StudentType;
+  student?: StudentType | undefined;
 };
 
 type ActionType = {
@@ -20,10 +20,13 @@ const initialState: StateType = {
 };
 
 // Reducer to handle the modal state
-const reducer = (state: StateType, action: ActionType) => {
+const reducer: React.Reducer<StateType, ActionType> = (
+  state: StateType,
+  action: ActionType
+) => { // Add the type to reducer
   switch (action.type) {
     case "TOGGLE_MODAL":
-      return { ...state, isOpen: !state.isOpen, student: {} }; // Toggle modal state & set the student to empty
+      return { ...state, isOpen: !state.isOpen, student: undefined }; 
     case "EDIT_STUDENT":
       return { ...state, isOpen: !state.isOpen, student: action.student };
     default:
@@ -49,9 +52,9 @@ export const ModalContextProvider = ({
   return (
     <ModalContext.Provider value={{ state, dispatch }}>
       {state.isOpen && (
-        <CreateStudentModal student={state.student} edit={isEditing} />
+        <CreateStudentModal student={state.student } edit={isEditing} />
       )}
       {children}
     </ModalContext.Provider>
   );
-};
+}; 
