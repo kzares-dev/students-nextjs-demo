@@ -20,11 +20,10 @@ export default function RootLayout({
       <body>
         <ToastContainer />
         <BackgroundSpotlight />
-        <ModalContextProvider>
-          <RefreshContextProvider>
-            {children}
-            </RefreshContextProvider>
-        </ModalContextProvider>
+
+        <RefreshContextProvider>
+          <ModalContextProvider>{children}</ModalContextProvider>
+        </RefreshContextProvider>
       </body>
     </html>
   );

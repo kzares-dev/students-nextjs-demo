@@ -31,8 +31,8 @@ const Table = () => {
     dosent matter if is set to true or false,
     you can find the login behind it on context/refreshContext,
     THE EFFECT RUNS AT:
-    @ Page Load @ Search @ Pagination
-    @ Delete @ Edit @ Create student
+    @ Page-Load @ Search @ Pagination
+    @ Delete @ Edit @ Create /student
   */
   useEffect(() => {
     setPromisePending(true);

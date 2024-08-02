@@ -7,11 +7,10 @@ import { StudentType } from "../types";
 type StateType = {
   isOpen: boolean; // Modal state (open or closed)
   student?: StudentType;
-
 };
 
 type ActionType = {
-  type: "TOGGLE_MODAL" | "EDIT_STUDENT" | 'REFRESH'; // Action type
+  type: "TOGGLE_MODAL" | "EDIT_STUDENT"; // Action type
   student?: StudentType;
 };
 
@@ -27,8 +26,6 @@ const reducer = (state: StateType, action: ActionType) => {
       return { ...state, isOpen: !state.isOpen, student: {} }; // Toggle modal state & set the student to empty
     case "EDIT_STUDENT":
       return { ...state, isOpen: !state.isOpen, student: action.student };
-    case "REFRESH":
-      return { ...state }; // this action not make changes on state, but the useEffect in the table capture the state change and refresh the data
     default:
       return state;
   }
@@ -47,11 +44,13 @@ export const ModalContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const isEditing = state.student?.firstName? true : false
+  const isEditing = state.student?.firstName ? true : false;
 
   return (
     <ModalContext.Provider value={{ state, dispatch }}>
-      {state.isOpen && <CreateStudentModal student={state.student} edit={isEditing} />}
+      {state.isOpen && (
+        <CreateStudentModal student={state.student} edit={isEditing} />
+      )}
       {children}
     </ModalContext.Provider>
   );

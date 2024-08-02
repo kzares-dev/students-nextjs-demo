@@ -395,12 +395,17 @@ DIALOG POPUP STYLES
   background: #000000b6;
   transform: scale(1.2);
 
-  .container {
+  .dialog_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
     max-width: 400px;
+    border-radius: 10px;
     min-height: 100px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 
     h1 {
       color: #222;

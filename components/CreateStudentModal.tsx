@@ -8,9 +8,10 @@ import { TbNumber } from "react-icons/tb";
 import { createStudent, editStudent } from "@/lib/actions/student.action";
 import Loader from "./Loader";
 import { StudentType } from "@/lib/types";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, use, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { ModalContext } from "@/lib/context/modalContext";
+import { RefreshContext } from "@/lib/context/refreshContext";
 
 const CreateStudentModal = ({
   student,
@@ -28,39 +29,31 @@ const CreateStudentModal = ({
     grade: student?.grade,
   };
   const [isPending, setIsPending] = useState(false);
-  const { state, dispatch } = useContext(ModalContext);
+  const { dispatch: modalDispatch } = useContext(ModalContext);
+  const { dispatch, state } = useContext(RefreshContext);
 
+  // This function increases code readability, making it easier to maintain and debug.
+  const selectPromise = async (formData: FormData) =>
+    edit ? await editStudent(formData, student!._id) : await createStudent(formData);
+
+  // Call for corresponding server action, trigger refresh if request is succesfull
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsPending(true);
-
-    const formData = new FormData(event.currentTarget);
+    console.log(state)
     
-    if (edit) {
-      await editStudent(formData, student!._id)
-        .then(() => {
-          toast.success(`Student ${edit ? "edited" : "created"}`);
-          dispatch({ type: "TOGGLE_MODAL" });
-        })
-        .catch(() => {
-          toast.error(`Error ${edit ? "editing" : "creating"} student `);
-          setIsPending(false);
-        })
-        .finally(() => setIsPending(false));
-    } else {
-      await createStudent(formData)
-        .then(() => {
-          toast.success(`Student ${edit ? "edited" : "created"}`);
-          dispatch({ type: "TOGGLE_MODAL" });
-        })
-        .catch(() => {
-          toast.error(`Error ${edit ? "editing" : "creating"} student `);
-          setIsPending(false);
-        })
-        .finally(() => setIsPending(false));
-    }
-
-    // Capture the error message to display to the user
+    const formData = new FormData(event.currentTarget);
+    await selectPromise(formData)
+    .then(() => {
+      toast.success(`Student ${edit ? "edited" : "created"}`);
+      modalDispatch({ type: "TOGGLE_MODAL" });
+      dispatch({ type: "REFRESH"})
+      })
+      .catch(() => {
+        toast.error(`Error ${edit ? "editing" : "creating"} student `);
+        setIsPending(false);
+      })
+      .finally(() => setIsPending(false));
   }
 
   return (
